@@ -7,7 +7,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Tic Tac Toe",
+      title: "Restaurant Page",
       filename: "index.html",
       template: "src/template.html",
     }),

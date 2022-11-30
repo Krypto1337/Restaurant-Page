@@ -36,6 +36,13 @@ let info = {
   },
 };
 
+let review = [
+  {
+    text: "The interior is ok. You can also sit well in the outdoor area. I had on different days 1 pasta dish, 1 x gyros plate and 1 x pizza. Everything was delicious!",
+    name: "Krypto",
+  },
+];
+
 let menu = [
   {
     item: false,
@@ -82,4 +89,4 @@ let aboutTitle = {
   title: "About",
 };
 
-export { info, menu, homeTitle, menuTitle, aboutTitle };
+export { info, menu, homeTitle, menuTitle, aboutTitle, review };

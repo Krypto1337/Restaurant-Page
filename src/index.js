@@ -1,12 +1,15 @@
 import "./css/reset.css";
 import "./css/style.css";
-import { info, menu, homeTitle, menuTitle, aboutTitle } from "./assets/config";
+import {
+  info,
+  menu,
+  homeTitle,
+  menuTitle,
+  aboutTitle,
+  review,
+} from "./assets/config";
+import { loadMain } from "./assets/loadPage";
 
-console.log(info);
-console.log(menu);
-console.log(homeTitle);
-console.log(menuTitle);
-console.log(aboutTitle);
-console.log(info.hours["monday"]["open"]);
-console.log(menu[1]);
-console.log(info.location);
+//Set globals
+let content = document.getElementById("content");
+loadMain("home", content, review, homeTitle, info);

@@ -131,7 +131,6 @@ function loadInfo(parent, info) {
   let information = makeInfo(info);
 
   information.forEach((section) => {
-    console.log(section);
     let infoHive = makeHive(section);
     parent.appendChild(infoHive);
   });
@@ -145,9 +144,33 @@ function clearPage(parent) {
   return true;
 }
 
+function makeTitleElement(pageTitle, headerClass, containerClass) {
+  let container = document.createElement("div");
+  container.classList.add("header-container");
+
+  let header = document.createElement("div");
+  header.classList.add("header");
+
+  let title = document.createElement("h1");
+  title.textContent = pageTitle;
+
+  if (containerClass) {
+    container.classList.add(containerClass);
+  }
+  if (headerClass) {
+    header.classList.add(headerClass);
+  }
+
+  header.appendChild(title);
+
+  container.appendChild(header);
+  return container;
+}
+
 //clear page, then load everything
 function loadMain(type, parent, contents, title, info) {
   clearPage(parent);
+  loadTitle(type, parent, title);
 
   contents.forEach((content) => {
     if (type == "home") {
@@ -161,6 +184,29 @@ function loadMain(type, parent, contents, title, info) {
   if (type == "home") {
     loadInfo(parent, info);
   }
+}
+
+function loadTitle(type, parent, title) {
+  if (type == "home") {
+    var titleElement = makeTitleElement(title.title);
+  } else if (type == "menu") {
+    var titleElement = makeTitleElement(
+      title.title,
+      "menu-header",
+      "menu-container"
+    );
+  } else if (type == "about") {
+    var titleElement = makeTitleElement(
+      title.title,
+      "about-header",
+      "about-container"
+    );
+  } else {
+    var titleElement = makeTitleElement(title.title);
+  }
+
+  parent.appendChild(titleElement);
+  return true;
 }
 
 export { loadMain };

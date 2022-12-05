@@ -117,7 +117,7 @@ function makeTitleElement(pageTitle, headerClass, containerClass) {
 
 function makeSubTitleElement(subTitle, headerClass, containerClass) {
   let container = document.createElement("div");
-  container.classList.add("header-container");
+  container.classList.add("sub-header");
 
   let header = document.createElement("div");
   header.classList.add("header");

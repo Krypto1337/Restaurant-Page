@@ -20,11 +20,11 @@ function clearPage(parent) {
 //returns complete elements
 function makeSection(pageConfig) {
   let outer = document.createElement("div");
-  outer.classList.add("Section-outer");
+  outer.classList.add("section-outer");
   outer.classList.add(pageConfig[0]["outer"]);
 
   let inner = document.createElement("div");
-  inner.classList.add("Section-inner");
+  inner.classList.add("section-inner");
   inner.classList.add(pageConfig[0]["inner"]);
 
   // Loop through all but the first element of the given object creating and adding elements to the honeycomb
@@ -94,10 +94,10 @@ function makeMenuItem(name, description, size, price, pic, alt) {
 
 function makeTitleElement(pageTitle, headerClass, containerClass) {
   let container = document.createElement("div");
-  container.classList.add("header-container");
+  container.classList.add("heading-container");
 
   let header = document.createElement("div");
-  header.classList.add("header");
+  header.classList.add("heading");
 
   let title = document.createElement("h1");
   title.textContent = pageTitle;
@@ -117,10 +117,10 @@ function makeTitleElement(pageTitle, headerClass, containerClass) {
 
 function makeSubTitleElement(subTitle, headerClass, containerClass) {
   let container = document.createElement("div");
-  container.classList.add("sub-header");
+  container.classList.add("heading-container");
 
   let header = document.createElement("div");
-  header.classList.add("header");
+  header.classList.add("heading");
 
   if (containerClass) {
     container.classList.add(containerClass);
@@ -208,6 +208,7 @@ function makeInfo(info) {
     ],
   ];
 }
+
 //creates a review object for makeSection function
 function makeReview(review, name) {
   return [

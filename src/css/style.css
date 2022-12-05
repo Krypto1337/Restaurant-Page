@@ -11,12 +11,6 @@
   align-items: center;
 }
 
-.btn {
-  color: var(--text-color);
-  background-color: #666362;
-  width: 70px;
-  height: 70px;
-  border: 0;
-  border-radius: 8px;
-  margin: 0 10px;
+ul li {
+  color: white;
 }

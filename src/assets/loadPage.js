@@ -37,6 +37,15 @@ function makeHive(pageConfig) {
   return outer;
 }
 
+function coverBtn(oldTab, newTab) {
+  let hide = document.getElementById(`cover${oldTab}`);
+  let show = document.getElementById(`cover${newTab}`);
+
+  hide.classList.add("hidden");
+  show.classList.remove("hidden");
+
+  return newTab;
+}
 //creates a review object for makeHive function
 function makeReview(review, name) {
   return [
@@ -209,4 +218,4 @@ function loadTitle(type, parent, title) {
   return true;
 }
 
-export { loadMain };
+export { loadMain, coverBtn };

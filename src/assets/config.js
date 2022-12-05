@@ -57,7 +57,7 @@ let about = [
 let menu = [
   {
     item: false,
-    subtitle: "Beverages",
+    subTitle: "Beverages",
   },
   {
     item: true,

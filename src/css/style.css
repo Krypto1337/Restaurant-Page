@@ -1,16 +1,31 @@
 :root {
-  --text-color: #fffff7;
-  --background-color: #0c0404;
+  --black: #0c0404;
+  --white: #fffff7;
+}
+
+ul {
+  text-align: center;
+  color: var(--white);
+}
+
+li {
+  flex: 1;
+  padding-top: 15px;
 }
 
 .navbar {
-  background-color: var(--background-color);
-  padding: 20px;
   display: flex;
+  height: 75px;
   justify-content: center;
   align-items: center;
+  background-color: var(--black);
+  justify-content: center;
 }
 
-ul li {
-  color: white;
+.cover {
+  height: 45px;
+  width: 95px;
+  margin: 30px 25px 0 25px;
+  border: 1px solid var(--white);
+  border-radius: 16px 16px 0 0;
 }

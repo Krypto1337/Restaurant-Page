@@ -43,6 +43,17 @@ let review = [
   },
 ];
 
+let about = [
+  {
+    name: "Krypto",
+    position: "Owner",
+    phone: "06666-666",
+    email: "notFake@krypto.com",
+    pic: "",
+    alt: "Krypto's Photo",
+  },
+];
+
 let menu = [
   {
     item: false,
@@ -89,4 +100,4 @@ let aboutTitle = {
   title: "About",
 };
 
-export { info, menu, homeTitle, menuTitle, aboutTitle, review };
+export { info, menu, homeTitle, menuTitle, aboutTitle, review, about };

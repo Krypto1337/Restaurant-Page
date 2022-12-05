@@ -7,6 +7,7 @@ import {
   menuTitle,
   aboutTitle,
   review,
+  about,
 } from "./assets/config";
 import { loadMain, coverBtn } from "./assets/loadPage";
 
@@ -29,7 +30,7 @@ btnNames.forEach((btnName) => {
     } else if (btn.id == "menu") {
       loadMain(btn.id, content, menu, menuTitle);
     } else {
-      loadMain(btn.id, content, "about stuff", aboutTitle);
+      loadMain(btn.id, content, about, aboutTitle);
     }
   });
 });

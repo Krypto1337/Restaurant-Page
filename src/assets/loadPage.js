@@ -1,3 +1,21 @@
+function coverBtn(oldTab, newTab) {
+  let hide = document.getElementById(`cover${oldTab}`);
+  let show = document.getElementById(`cover${newTab}`);
+
+  hide.classList.add("hidden");
+  show.classList.remove("hidden");
+
+  return newTab;
+}
+
+//Clear parent text
+function clearPage(parent) {
+  parent.textContent = "";
+  return true;
+}
+
+//Objects for makeHive
+
 //create html elements for hive-layout
 //returns complete elements
 function makeHive(pageConfig) {
@@ -37,33 +55,89 @@ function makeHive(pageConfig) {
   return outer;
 }
 
-function coverBtn(oldTab, newTab) {
-  let hide = document.getElementById(`cover${oldTab}`);
-  let show = document.getElementById(`cover${newTab}`);
-
-  hide.classList.add("hidden");
-  show.classList.remove("hidden");
-
-  return newTab;
-}
-//creates a review object for makeHive function
-function makeReview(review, name) {
+//create MenuItem for makeHive
+//return object
+function makeMenuItem(name, description, size, price, pic, alt) {
   return [
     {
-      outer: "review-outer",
-      inner: "review-inner",
+      outer: "menu-outer",
+      inner: "menu-inner",
     },
     {
-      el: "p",
-      text: review,
-      class: "review",
-    },
-    {
-      el: "p",
+      el: "h3",
       text: name,
-      class: "customer",
+      class: "item-name",
+    },
+    {
+      el: "p",
+      text: description,
+      class: "item-description",
+    },
+    {
+      el: "p",
+      text: size,
+      class: "item-size",
+    },
+    {
+      el: "p",
+      text: price,
+      class: "item-price",
+    },
+    {
+      el: "img",
+      text: alt,
+      class: "item-img",
+      source: pic,
     },
   ];
+}
+
+function makeTitleElement(pageTitle, headerClass, containerClass) {
+  let container = document.createElement("div");
+  container.classList.add("header-container");
+
+  let header = document.createElement("div");
+  header.classList.add("header");
+
+  let title = document.createElement("h1");
+  title.textContent = pageTitle;
+
+  if (containerClass) {
+    container.classList.add(containerClass);
+  }
+  if (headerClass) {
+    header.classList.add(headerClass);
+  }
+
+  header.appendChild(title);
+
+  container.appendChild(header);
+  return container;
+}
+
+function makeSubTitleElement(subTitle, headerClass, containerClass) {
+  let container = document.createElement("div");
+  container.classList.add("header-container");
+
+  let header = document.createElement("div");
+  header.classList.add("header");
+
+  if (containerClass) {
+    container.classList.add(containerClass);
+  }
+
+  if (headerClass) {
+    header.classList.add(headerClass);
+  }
+
+  let title = document.createElement("h2");
+  title.textContent = subTitle;
+
+  header.appendChild(title);
+
+  container.appendChild(header);
+
+  return container;
 }
 
 //create object for makeHive
@@ -134,6 +208,62 @@ function makeInfo(info) {
     ],
   ];
 }
+//creates a review object for makeHive function
+function makeReview(review, name) {
+  return [
+    {
+      outer: "review-outer",
+      inner: "review-inner",
+    },
+    {
+      el: "p",
+      text: review,
+      class: "review",
+    },
+    {
+      el: "p",
+      text: name,
+      class: "customer",
+    },
+  ];
+}
+
+function makeAbout(name, position, phone, email, pic, alt) {
+  return [
+    {
+      outer: "about-outer",
+      inner: "about-inner",
+    },
+    {
+      el: "p",
+      text: name,
+      class: "about-name",
+    },
+    {
+      el: "p",
+      text: position,
+      class: "about-position",
+    },
+    {
+      el: "p",
+      text: phone,
+      class: "about-phone",
+    },
+    {
+      el: "p",
+      text: email,
+      class: "about-email",
+    },
+    {
+      el: "img",
+      text: alt,
+      source: pic,
+      class: "about-pic",
+    },
+  ];
+}
+
+//Load items
 
 //Create info elements
 function loadInfo(parent, info) {
@@ -147,54 +277,7 @@ function loadInfo(parent, info) {
   return true;
 }
 
-//Clear parent text
-function clearPage(parent) {
-  parent.textContent = "";
-  return true;
-}
-
-function makeTitleElement(pageTitle, headerClass, containerClass) {
-  let container = document.createElement("div");
-  container.classList.add("header-container");
-
-  let header = document.createElement("div");
-  header.classList.add("header");
-
-  let title = document.createElement("h1");
-  title.textContent = pageTitle;
-
-  if (containerClass) {
-    container.classList.add(containerClass);
-  }
-  if (headerClass) {
-    header.classList.add(headerClass);
-  }
-
-  header.appendChild(title);
-
-  container.appendChild(header);
-  return container;
-}
-
-//clear page, then load everything
-function loadMain(type, parent, contents, title, info) {
-  clearPage(parent);
-  loadTitle(type, parent, title);
-
-  contents.forEach((content) => {
-    if (type == "home") {
-      var contentConfig = makeReview(content.text, content.name);
-    }
-
-    let layout = makeHive(contentConfig);
-    parent.appendChild(layout);
-  });
-
-  if (type == "home") {
-    loadInfo(parent, info);
-  }
-}
-
+//load title
 function loadTitle(type, parent, title) {
   if (type == "home") {
     var titleElement = makeTitleElement(title.title);
@@ -218,4 +301,50 @@ function loadTitle(type, parent, title) {
   return true;
 }
 
+//clear page, then load everything
+function loadMain(type, parent, contents, title, info) {
+  clearPage(parent);
+  loadTitle(type, parent, title);
+
+  contents.forEach((content) => {
+    if (type == "home") {
+      var contentConfig = makeReview(content.text, content.name);
+    } else if (type == "menu") {
+      if (content.item) {
+        var contentConfig = makeMenuItem(
+          content.name,
+          content.description,
+          content.size,
+          content.price,
+          content.pic,
+          content.alt
+        );
+      } else {
+        var subTitle = makeSubTitleElement(
+          content.subTitle,
+          "sub-heading",
+          "sub-container"
+        );
+        parent.appendChild(subTitle);
+        return;
+      }
+    } else {
+      var contentConfig = makeAbout(
+        content.name,
+        content.position,
+        content.phone,
+        content.email,
+        content.pic,
+        content.alt
+      );
+    }
+
+    let layout = makeHive(contentConfig);
+    parent.appendChild(layout);
+  });
+
+  if (type == "home") {
+    loadInfo(parent, info);
+  }
+}
 export { loadMain, coverBtn };

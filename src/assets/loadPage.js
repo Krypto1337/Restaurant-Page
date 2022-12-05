@@ -14,17 +14,17 @@ function clearPage(parent) {
   return true;
 }
 
-//Objects for makeHive
+//Objects for makeSection
 
-//create html elements for hive-layout
+//create html elements for Section-layout
 //returns complete elements
-function makeHive(pageConfig) {
+function makeSection(pageConfig) {
   let outer = document.createElement("div");
-  outer.classList.add("hive-outer");
+  outer.classList.add("Section-outer");
   outer.classList.add(pageConfig[0]["outer"]);
 
   let inner = document.createElement("div");
-  inner.classList.add("hive-inner");
+  inner.classList.add("Section-inner");
   inner.classList.add(pageConfig[0]["inner"]);
 
   // Loop through all but the first element of the given object creating and adding elements to the honeycomb
@@ -55,7 +55,7 @@ function makeHive(pageConfig) {
   return outer;
 }
 
-//create MenuItem for makeHive
+//create MenuItem for makeSection
 //return object
 function makeMenuItem(name, description, size, price, pic, alt) {
   return [
@@ -140,7 +140,7 @@ function makeSubTitleElement(subTitle, headerClass, containerClass) {
   return container;
 }
 
-//create object for makeHive
+//create object for makeSection
 //return object
 function makeInfo(info) {
   return [
@@ -208,7 +208,7 @@ function makeInfo(info) {
     ],
   ];
 }
-//creates a review object for makeHive function
+//creates a review object for makeSection function
 function makeReview(review, name) {
   return [
     {
@@ -270,8 +270,8 @@ function loadInfo(parent, info) {
   let information = makeInfo(info);
 
   information.forEach((section) => {
-    let infoHive = makeHive(section);
-    parent.appendChild(infoHive);
+    let infoSection = makeSection(section);
+    parent.appendChild(infoSection);
   });
 
   return true;
@@ -339,7 +339,7 @@ function loadMain(type, parent, contents, title, info) {
       );
     }
 
-    let layout = makeHive(contentConfig);
+    let layout = makeSection(contentConfig);
     parent.appendChild(layout);
   });
 
